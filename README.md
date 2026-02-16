@@ -59,7 +59,7 @@ Client Request
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/Harmony_Transaction_Aggregator.git
+git clone https://github.com/mrNiiAmatey/Harmony_Transaction_Aggregator.git
 cd Harmony_Transaction_Aggregator
 
 # Build and run
@@ -133,7 +133,25 @@ src/main/java/org/harmony/transactionaggregator/
     ├── AsyncService.java                   # Async orchestration layer
     └── TransactionService.java             # HTTP client with retry + caching
 ```
+## Testing
 
+The project includes a comprehensive test suite with **17 test cases** covering all layers of the application.
+```bash
+.\gradlew.bat test
+```
+
+| Test Class                     | Tests | Coverage Focus                                        |
+|--------------------------------|-------|-------------------------------------------------------|
+| `TransactionServiceTest`       | 10    | Retry logic, status-aware error handling, null safety  |
+| `AggregatorControllerTest`     | 4     | Endpoint behavior, sorting, missing params             |
+| `AggregatorConfigurationTest`  | 3     | Bean wiring and cache initialization                   |
+| `TransactionTest`              | 3     | Model constructors, getters/setters                    |
+| `AsyncServiceTest`             | 2     | Future delegation and empty result handling             |
+
+View the HTML test report after running:
+```
+build/reports/tests/test/index.html
+```
 ## Roadmap
 
 - [ ] Circuit breaker pattern (Resilience4j)
